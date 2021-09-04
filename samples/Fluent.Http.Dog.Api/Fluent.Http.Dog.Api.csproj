@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IEvangelist.Azure.CosmosRepository" Version="2.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+  </ItemGroup>
+
+</Project>

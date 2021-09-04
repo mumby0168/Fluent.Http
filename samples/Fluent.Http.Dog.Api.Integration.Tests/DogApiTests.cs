@@ -1,3 +1,4 @@
+using Fluent.Http.Abstractions;
 using Fluent.Http.Dog.Api.Integration.Tests.Abstractions;
 using Fluent.Http.Dog.Api.Models;
 using System.Threading.Tasks;

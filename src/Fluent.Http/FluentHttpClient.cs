@@ -1,5 +1,7 @@
 ﻿
+using Fluent.Http.Abstractions;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -7,16 +9,45 @@ namespace Fluent.Http
 {
     public class FluentHttpClient : IFluentHttpClient
     {
-        private readonly HttpClient? _client;
+        private readonly HttpClient _client;
         
         private FluentHttpClient(HttpClient? client) => _client = client ?? new HttpClient();
 
         public static IFluentHttpClient Build(HttpClient? client = null) =>
             new FluentHttpClient(client);
 
-        public IFluentHttpClient Request(Func<HttpRequestMessage, Task> request, Func<HttpResponseMessage, Task> response) => throw new NotImplementedException();
+        public List<IFluentStep> Steps { get; } = new();
 
-        public Task ExecuteAsync() => throw new NotImplementedException();
+        public IFluentHttpClient Request(Func<Task<HttpRequestMessage>> request, Func<HttpResponseMessage, Task>? response = null)
+        {
+            Steps.Add(new FluentHttpStep(_client, request, response));
+            return this;
+        }
+
+        public IFluentHttpClient Request(Func<HttpRequestMessage> request, Func<HttpResponseMessage, Task>? response = null)
+        {
+            Steps.Add(new FluentHttpStep(_client, () => Task.FromResult(request()), response));
+            return this;
+        }
+
+        public IFluentHttpClient Step(Func<Task> step, Func<Task>? postStep = null)
+        {
+            Steps.Add(new FluentStep(step, postStep));
+            return this;
+        }
+
+        public async Task ExecuteAsync()
+        {
+            foreach (IFluentStep step in Steps)
+            {
+                await step.ExecuteAsync();
+
+                if (step is IFluentValidationStep validationStep)
+                {
+                    await validationStep.ValidateAsync();
+                }
+            }
+        }
 
     }
 }
