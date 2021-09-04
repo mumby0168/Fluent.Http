@@ -36,7 +36,7 @@ jobs:
       run: dotnet build ./Fluent.Http.sln
       
     - name: Pack
-      run: dotnet pack ./src/Fluent.Http.csproj -p:PackageVersion='${{ steps.regex-match.outputs.match }}' --output packages
+      run: dotnet pack ./src/Fluent.Http/Fluent.Http.csproj -p:PackageVersion='${{ steps.regex-match.outputs.match }}' --output packages
       
     - name: Publish Package
       run: nuget push **\*.nupkg -NoSymbols -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
