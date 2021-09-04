@@ -11,7 +11,7 @@ namespace Fluent.Http
 
         public HttpRequestMessageBuilder WithUrl(string url)
         {
-            Message.RequestUri = new Uri(url);
+            Message.RequestUri = new Uri(url, UriKind.Relative);
             return this;
         }
 
@@ -32,5 +32,11 @@ namespace Fluent.Http
             Message.Method = new HttpMethod(method.ToUpper());
             return this;
         }
+
+        public HttpRequestMessage Build() 
+            => Message;
+
+        public static implicit operator HttpRequestMessage(HttpRequestMessageBuilder builder) => 
+            builder.Message;
     }
 }

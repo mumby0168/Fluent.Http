@@ -18,11 +18,11 @@ namespace Fluent.Http.Dog.Api.Controllers
         public DogController(IRepository<DogModel> repository) => _repository = repository;
 
         [HttpGet]
-        public async ValueTask<IActionResult> GetDog() =>
+        public async ValueTask<IActionResult> GetDogs() =>
             Ok(await _repository.GetAsync(d => d.Type == nameof(DogModel)));
 
         [HttpGet("{dogId}")]
-        public async ValueTask<IActionResult> GetDog(string dogId)
+        public async ValueTask<IActionResult> GetDog([FromRoute] string dogId)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Fluent.Http.Dog.Api.Controllers
         }
 
         [HttpDelete("{dogId}")]
-        public async ValueTask<IActionResult> DeleteDog(string dogId)
+        public async ValueTask<IActionResult> DeleteDog([FromRoute] string dogId)
         {
             try
             {

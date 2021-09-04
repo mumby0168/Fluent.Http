@@ -27,6 +27,7 @@ namespace Fluent.Http.Dog.Api
                 .UseRouting()
                 .UseEndpoints(endpoints =>
                 {
+                    endpoints.MapControllers();
                     endpoints.MapGet("/", async context =>
                     {
                         await context.Response.WriteAsync("Dog API");
