@@ -9,16 +9,6 @@ namespace Fluent.Http
         public static HttpRequestMessageBuilder Post() => 
             new HttpRequestMessageBuilder().WithMethod(HttpMethod.Post);
         
-        public static HttpRequestMessageBuilder Post<TBody>(TBody body, JsonSerializerSettings? settings = null) => 
-            new HttpRequestMessageBuilder()
-                .WithMethod(HttpMethod.Post)
-                .WithJsonBody(body, settings);
-        
-        public static HttpRequestMessageBuilder Put<TBody>(TBody body, JsonSerializerSettings? settings = null) => 
-            new HttpRequestMessageBuilder()
-                .WithMethod(HttpMethod.Put)
-                .WithJsonBody(body, settings);
-        
         public static HttpRequestMessageBuilder Put() => 
             new HttpRequestMessageBuilder().WithMethod(HttpMethod.Put);
         
@@ -30,5 +20,15 @@ namespace Fluent.Http
 
         public static HttpRequestMessageBuilder Patch() =>
             new HttpRequestMessageBuilder().WithMethod(FluentHttpConstants.HttpMethodPatch);
+        
+        public static HttpRequestMessageBuilder Post<TBody>(TBody body, JsonSerializerSettings? settings = null) => 
+            new HttpRequestMessageBuilder()
+                .WithMethod(HttpMethod.Post)
+                .WithJsonBody(body, settings);
+        
+        public static HttpRequestMessageBuilder Put<TBody>(TBody body, JsonSerializerSettings? settings = null) => 
+            new HttpRequestMessageBuilder()
+                .WithMethod(HttpMethod.Put)
+                .WithJsonBody(body, settings);
     }
 }
