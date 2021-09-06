@@ -17,7 +17,7 @@ namespace Fluent.Http
         /// </summary>
         /// <param name="step">The asynchronous step to run.</param>
         /// <param name="postStep">The asynchronous post step to run.</param>
-        public FluentStep(Func<Task> step, Func<Task>? postStep)
+        public FluentStep(Func<Task> step, Func<Task>? postStep = null)
         {
             _step = step;
             _postStep = postStep;

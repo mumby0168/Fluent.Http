@@ -13,7 +13,7 @@ namespace Fluent.Http
         private readonly HttpClient _client;
         private readonly Func<Task<HttpRequestMessage>> _messageFunc;
         private readonly Func<HttpResponseMessage, Task>? _responseFunc;
-        private HttpResponseMessage _responseMessage = new();
+        internal HttpResponseMessage ResponseMessage = new();
 
         /// <summary>
         /// Creates an instance of the <see cref="FluentHttpStep"/>
@@ -32,13 +32,13 @@ namespace Fluent.Http
         /// Executes the <see cref="HttpRequestMessage"/>.
         /// </summary>
         public async Task ExecuteAsync() => 
-            _responseMessage = await _client.SendAsync(await _messageFunc.Invoke());
+            ResponseMessage = await _client.SendAsync(await _messageFunc.Invoke());
 
         /// <summary>
         /// Processes the <see cref="HttpResponseMessage"/>
         /// </summary>
         /// <returns></returns>
         public Task ValidateAsync() => 
-            _responseFunc?.Invoke(_responseMessage) ?? Task.CompletedTask;
+            _responseFunc?.Invoke(ResponseMessage) ?? Task.CompletedTask;
     }
 }
