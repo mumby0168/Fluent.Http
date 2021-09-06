@@ -9,7 +9,6 @@ namespace Fluent.Http.Tests
 {
     public class FluentHttpStepTests
     {
-
         readonly MockHttpMessageHandler _handler = new();
         readonly HttpClient _client;
 
@@ -22,11 +21,30 @@ namespace Fluent.Http.Tests
                 .When(HttpMethod.Get, "http://test.com/api/test")
                 .Respond(HttpStatusCode.OK);
 
-            FluentHttpStep step = new(_client, () => Task.FromResult(new HttpRequestMessage(HttpMethod.Get, "http://test.com/api/test")));
+            FluentHttpStep step = new(_client,
+                () => Task.FromResult(new HttpRequestMessage(HttpMethod.Get, "http://test.com/api/test")));
 
             await step.ExecuteAsync();
 
             step.ResponseMessage.Should().Be200Ok();
+        }
+
+        [Fact]
+        public async Task ValidateAsync_ResponseMessage_ValidatesCorrectly()
+        {
+            _handler
+                .When(HttpMethod.Get, "http://test.com/api/test")
+                .Respond(HttpStatusCode.OK);
+
+            FluentHttpStep step = new(_client,
+                () => Task.FromResult(new HttpRequestMessage(HttpMethod.Get, "http://test.com/api/test")), message =>
+                {
+                    message.Should().Be200Ok();
+                    return Task.CompletedTask;
+                });
+
+            await step.ExecuteAsync();
+            await step.ValidateAsync();
         }
     }
 }
