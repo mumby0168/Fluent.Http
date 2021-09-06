@@ -4,6 +4,10 @@ using System.Net.Http;
 
 namespace Fluent.Http
 {
+    /// <summary>
+    /// A factory to easily create common requests.
+    /// <remarks>using static Fluent.Http.HttpRequestMessageFactory; gives easy access to methods.</remarks>
+    /// </summary>
     public static class HttpRequestMessageFactory
     {
         /// <summary>
