@@ -1,3 +1,6 @@
+
+[![.NET code metrics](https://github.com/mumby0168/Fluent.Http/actions/workflows/code-metrics.yml/badge.svg)](https://github.com/mumby0168/Fluent.Http/actions/workflows/code-metrics.yml) [![Release Package Version](https://github.com/mumby0168/Fluent.Http/actions/workflows/nuget-release.yml/badge.svg)](https://github.com/mumby0168/Fluent.Http/actions/workflows/nuget-release.yml) [![build](https://github.com/mumby0168/Fluent.Http/actions/workflows/build-validation.yml/badge.svg)](https://github.com/mumby0168/Fluent.Http/actions/workflows/build-validation.yml) [![NuGet](https://img.shields.io/nuget/v/Mumby0168.Fluent.Http.svg?style=flat)](https://www.nuget.org/packages/Mumby0168.Fluent.Http)
+
 # Fluent.Http
 A library for executing a set of http operations in a sequence using a fluent API. This library is more suited towards writing integration/acceptance tests but could still be used where http calls need to be made in a specific order. In a lot of cases integration test's can become very large and methods can bloat quite easily. The idea of this library is to write test's as you would production code small little reusable snippets of code that have a clean and concise action to perform. `Fluent.Http` provides the foundations for this when talking about testing web api projects which are becoming more & more popular.
 
