@@ -348,8 +348,8 @@ The *Fluent.Http.csproj* project file contains:
 
 - 2 namespaces.
 - 9 named types.
-- 344 total lines of source code.
-- Approximately 58 lines of executable code.
+- 348 total lines of source code.
+- Approximately 59 lines of executable code.
 - The highest cyclomatic complexity is 3 :heavy_check_mark:.
 
 <details>
@@ -447,8 +447,8 @@ The `Fluent.Http.Abstractions` namespace contains 3 named types.
 The `Fluent.Http` namespace contains 6 named types.
 
 - 6 named types.
-- 276 total lines of source code.
-- Approximately 52 lines of executable code.
+- 280 total lines of source code.
+- Approximately 53 lines of executable code.
 - The highest cyclomatic complexity is 3 :heavy_check_mark:.
 
 <details>
@@ -519,9 +519,9 @@ The `Fluent.Http` namespace contains 6 named types.
 | Field | [13](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L13 "HttpClient FluentHttpStep._client") | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | [14](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L14 "Func<Task<HttpRequestMessage>> FluentHttpStep._messageFunc") | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
 | Field | [15](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L15 "Func<HttpResponseMessage, Task>? FluentHttpStep._responseFunc") | 100 | 0 :heavy_check_mark: | 0 | 4 | 1 / 0 |
-| Field | [16](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L16 "HttpResponseMessage FluentHttpStep._responseMessage") | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
 | Method | [24](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L24 "FluentHttpStep.FluentHttpStep(HttpClient client, Func<Task<HttpRequestMessage>> messageFunc, Func<HttpResponseMessage, Task>? responseFunc = null)") | 74 | 1 :heavy_check_mark: | 0 | 8 | 12 / 4 |
 | Method | [34](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L34 "Task FluentHttpStep.ExecuteAsync()") | 92 | 1 :heavy_check_mark: | 0 | 7 | 5 / 1 |
+| Field | [16](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L16 "HttpResponseMessage FluentHttpStep.ResponseMessage") | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
 | Method | [41](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentHttpStep.cs#L41 "Task FluentHttpStep.ValidateAsync()") | 94 | 3 :heavy_check_mark: | 0 | 5 | 6 / 1 |
 
 <a href="#fluent-http">:top: back to Fluent.Http</a>
@@ -538,14 +538,14 @@ The `Fluent.Http` namespace contains 6 named types.
 
 - The `FluentStep` contains 5 members.
 - 31 total lines of source code.
-- Approximately 4 lines of executable code.
+- Approximately 5 lines of executable code.
 - The highest cyclomatic complexity is 3 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Field | [13](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentStep.cs#L13 "Func<Task>? FluentStep._postStep") | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
 | Field | [12](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentStep.cs#L12 "Func<Task> FluentStep._step") | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
-| Method | [20](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentStep.cs#L20 "FluentStep.FluentStep(Func<Task> step, Func<Task>? postStep)") | 85 | 1 :heavy_check_mark: | 0 | 3 | 10 / 2 |
+| Method | [20](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentStep.cs#L20 "FluentStep.FluentStep(Func<Task> step, Func<Task>? postStep = null)") | 77 | 1 :heavy_check_mark: | 0 | 3 | 10 / 3 |
 | Method | [30](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentStep.cs#L30 "Task FluentStep.ExecuteAsync()") | 100 | 1 :heavy_check_mark: | 0 | 3 | 5 / 1 |
 | Method | [36](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/FluentStep.cs#L36 "Task FluentStep.ValidateAsync()") | 100 | 3 :heavy_check_mark: | 0 | 4 | 5 / 1 |
 
@@ -589,19 +589,19 @@ The `Fluent.Http` namespace contains 6 named types.
 <br>
 
 - The `HttpRequestMessageFactory` contains 7 members.
-- 61 total lines of source code.
+- 65 total lines of source code.
 - Approximately 9 lines of executable code.
 - The highest cyclomatic complexity is 1 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | [34](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L34 "HttpRequestMessageBuilder HttpRequestMessageFactory.Delete()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
-| Method | [27](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L27 "HttpRequestMessageBuilder HttpRequestMessageFactory.Get()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
-| Method | [41](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L41 "HttpRequestMessageBuilder HttpRequestMessageFactory.Patch()") | 96 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
-| Method | [13](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L13 "HttpRequestMessageBuilder HttpRequestMessageFactory.Post()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
-| Method | [51](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L51 "HttpRequestMessageBuilder HttpRequestMessageFactory.Post<TBody>(TBody body, JsonSerializerSettings? settings = null)") | 82 | 1 :heavy_check_mark: | 0 | 4 | 11 / 2 |
-| Method | [20](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L20 "HttpRequestMessageBuilder HttpRequestMessageFactory.Put()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
-| Method | [63](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L63 "HttpRequestMessageBuilder HttpRequestMessageFactory.Put<TBody>(TBody body, JsonSerializerSettings? settings = null)") | 82 | 1 :heavy_check_mark: | 0 | 4 | 11 / 2 |
+| Method | [38](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L38 "HttpRequestMessageBuilder HttpRequestMessageFactory.Delete()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
+| Method | [31](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L31 "HttpRequestMessageBuilder HttpRequestMessageFactory.Get()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
+| Method | [45](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L45 "HttpRequestMessageBuilder HttpRequestMessageFactory.Patch()") | 96 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
+| Method | [17](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L17 "HttpRequestMessageBuilder HttpRequestMessageFactory.Post()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
+| Method | [55](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L55 "HttpRequestMessageBuilder HttpRequestMessageFactory.Post<TBody>(TBody body, JsonSerializerSettings? settings = null)") | 82 | 1 :heavy_check_mark: | 0 | 4 | 11 / 2 |
+| Method | [24](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L24 "HttpRequestMessageBuilder HttpRequestMessageFactory.Put()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 6 / 1 |
+| Method | [67](https://github.com/mumby0168/Fluent.Http/blob/main/src/Fluent.Http/HttpRequestMessageFactory.cs#L67 "HttpRequestMessageBuilder HttpRequestMessageFactory.Put<TBody>(TBody body, JsonSerializerSettings? settings = null)") | 82 | 1 :heavy_check_mark: | 0 | 4 | 11 / 2 |
 
 <a href="#fluent-http">:top: back to Fluent.Http</a>
 
@@ -613,15 +613,197 @@ The `Fluent.Http` namespace contains 6 named types.
 
 <div id='fluent-http-tests'></div>
 
-## Fluent.Http.Tests :question:
+## Fluent.Http.Tests :heavy_check_mark:
 
 The *Fluent.Http.Tests.csproj* project file contains:
 
-- 0 namespaces.
-- 0 named types.
-- 0 total lines of source code.
-- Approximately 0 lines of executable code.
-- The highest cyclomatic complexity is 0 :question:.
+- 2 namespaces.
+- 6 named types.
+- 325 total lines of source code.
+- Approximately 113 lines of executable code.
+- The highest cyclomatic complexity is 2 :heavy_check_mark:.
+
+<details>
+<summary>
+  <strong id="fluent-http-tests-models">
+    Fluent.Http.Tests.Models :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+The `Fluent.Http.Tests.Models` namespace contains 1 named types.
+
+- 1 named types.
+- 8 total lines of source code.
+- Approximately 1 lines of executable code.
+- The highest cyclomatic complexity is 2 :heavy_check_mark:.
+
+<details>
+<summary>
+  <strong id="person">
+    Person :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `Person` contains 2 members.
+- 6 total lines of source code.
+- Approximately 1 lines of executable code.
+- The highest cyclomatic complexity is 2 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Property | [5](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/Models/Person.cs#L5 "int Person.Id") | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Property | [7](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/Models/Person.cs#L7 "string Person.Name") | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+
+<a href="#fluent-http-tests-models">:top: back to Fluent.Http.Tests.Models</a>
+
+</details>
+
+</details>
+
+<details>
+<summary>
+  <strong id="fluent-http-tests">
+    Fluent.Http.Tests :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+The `Fluent.Http.Tests` namespace contains 5 named types.
+
+- 5 named types.
+- 317 total lines of source code.
+- Approximately 112 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+<details>
+<summary>
+  <strong id="fluenthttpclienttests">
+    FluentHttpClientTests :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `FluentHttpClientTests` contains 6 members.
+- 106 total lines of source code.
+- Approximately 44 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Field | [15](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpClientTests.cs#L15 "HttpClient FluentHttpClientTests._client") | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | [14](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpClientTests.cs#L14 "MockHttpMessageHandler FluentHttpClientTests._handler") | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | [17](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpClientTests.cs#L17 "FluentHttpClientTests.FluentHttpClientTests()") | 85 | 1 :heavy_check_mark: | 0 | 4 | 5 / 2 |
+| Method | [24](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpClientTests.cs#L24 "Task FluentHttpClientTests.ExecuteAsync_AsyncHttpRequest_RunsCorrectly()") | 61 | 1 :heavy_check_mark: | 0 | 6 | 31 / 14 |
+| Method | [56](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpClientTests.cs#L56 "Task FluentHttpClientTests.ExecuteAsync_HttpRequest_RunsCorrectly()") | 61 | 1 :heavy_check_mark: | 0 | 6 | 31 / 14 |
+| Method | [88](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpClientTests.cs#L88 "Task FluentHttpClientTests.ExecuteAsync_SimpleStep_RunsCorrectly()") | 62 | 1 :heavy_check_mark: | 0 | 6 | 30 / 13 |
+
+<a href="#fluent-http-tests">:top: back to Fluent.Http.Tests</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="fluenthttpsteptests">
+    FluentHttpStepTests :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `FluentHttpStepTests` contains 5 members.
+- 40 total lines of source code.
+- Approximately 14 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Field | [13](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpStepTests.cs#L13 "HttpClient FluentHttpStepTests._client") | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | [12](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpStepTests.cs#L12 "MockHttpMessageHandler FluentHttpStepTests._handler") | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | [15](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpStepTests.cs#L15 "FluentHttpStepTests.FluentHttpStepTests()") | 95 | 1 :heavy_check_mark: | 0 | 3 | 1 / 1 |
+| Method | [18](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpStepTests.cs#L18 "Task FluentHttpStepTests.ExecuteAsync_HttpRequest_GetsHttpResponse()") | 75 | 1 :heavy_check_mark: | 0 | 7 | 14 / 5 |
+| Method | [33](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentHttpStepTests.cs#L33 "Task FluentHttpStepTests.ValidateAsync_ResponseMessage_ValidatesCorrectly()") | 71 | 1 :heavy_check_mark: | 0 | 7 | 17 / 7 |
+
+<a href="#fluent-http-tests">:top: back to Fluent.Http.Tests</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="fluentsteptests">
+    FluentStepTests :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `FluentStepTests` contains 3 members.
+- 44 total lines of source code.
+- Approximately 16 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | [11](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentStepTests.cs#L11 "Task FluentStepTests.ExecuteAsync_Step_Runs()") | 74 | 1 :heavy_check_mark: | 0 | 4 | 14 / 6 |
+| Method | [41](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentStepTests.cs#L41 "Task FluentStepTests.ValidateAsync_NullPostStep_RunsWithNoError()") | 85 | 1 :heavy_check_mark: | 0 | 4 | 7 / 3 |
+| Method | [26](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/FluentStepTests.cs#L26 "Task FluentStepTests.ValidateAsync_PostStep_Runs()") | 72 | 1 :heavy_check_mark: | 0 | 4 | 14 / 7 |
+
+<a href="#fluent-http-tests">:top: back to Fluent.Http.Tests</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="httprequestmessagebuildertests">
+    HttpRequestMessageBuilderTests :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `HttpRequestMessageBuilderTests` contains 5 members.
+- 62 total lines of source code.
+- Approximately 19 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | [62](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageBuilderTests.cs#L62 "void HttpRequestMessageBuilderTests.Build_Message_ReturnsMessage()") | 82 | 1 :heavy_check_mark: | 0 | 4 | 10 / 3 |
+| Method | [13](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageBuilderTests.cs#L13 "Task HttpRequestMessageBuilderTests.WithJsonBody_Object_SetsBody()") | 68 | 1 :heavy_check_mark: | 0 | 7 | 14 / 7 |
+| Method | [28](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageBuilderTests.cs#L28 "void HttpRequestMessageBuilderTests.WithMethod_HttpMethod_SetsMethod()") | 84 | 1 :heavy_check_mark: | 0 | 4 | 10 / 3 |
+| Method | [39](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageBuilderTests.cs#L39 "void HttpRequestMessageBuilderTests.WithMethod_StringHttpMethod_SetsMethod()") | 82 | 1 :heavy_check_mark: | 0 | 4 | 10 / 3 |
+| Method | [51](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageBuilderTests.cs#L51 "void HttpRequestMessageBuilderTests.WithUrl_Url_SetsRealativeUri()") | 82 | 1 :heavy_check_mark: | 0 | 4 | 10 / 3 |
+
+<a href="#fluent-http-tests">:top: back to Fluent.Http.Tests</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="httprequestmessagefactorytests">
+    HttpRequestMessageFactoryTests :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `HttpRequestMessageFactoryTests` contains 7 members.
+- 50 total lines of source code.
+- Approximately 19 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | [27](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L27 "void HttpRequestMessageFactoryTests.Delete___ReturnsDeleteMessage()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 3 / 1 |
+| Method | [19](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L19 "void HttpRequestMessageFactoryTests.Get___ReturnsGetMessage()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 3 / 1 |
+| Method | [31](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L31 "void HttpRequestMessageFactoryTests.Patch___ReturnsPatchMessage()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 3 / 1 |
+| Method | [15](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L15 "void HttpRequestMessageFactoryTests.Post___ReturnsPostMessage()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 3 / 1 |
+| Method | [36](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L36 "Task HttpRequestMessageFactoryTests.Post_JsonObject_SetsPostRequestCorrectly()") | 68 | 1 :heavy_check_mark: | 0 | 6 | 12 / 7 |
+| Method | [23](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L23 "void HttpRequestMessageFactoryTests.Put___ReturnsPutMessage()") | 100 | 1 :heavy_check_mark: | 0 | 2 | 3 / 1 |
+| Method | [49](https://github.com/mumby0168/Fluent.Http/blob/main/tests/Fluent.Http.Tests/HttpRequestMessageFactoryTests.cs#L49 "Task HttpRequestMessageFactoryTests.Put_JsonObject_SetsPutRequestCorrectly()") | 68 | 1 :heavy_check_mark: | 0 | 6 | 12 / 7 |
+
+<a href="#fluent-http-tests">:top: back to Fluent.Http.Tests</a>
+
+</details>
+
+</details>
 
 <a href="#fluent-http-tests">:top: back to Fluent.Http.Tests</a>
 
