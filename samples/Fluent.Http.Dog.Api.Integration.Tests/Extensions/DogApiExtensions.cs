@@ -9,7 +9,10 @@ namespace Fluent.Http.Dog.Api.Integration.Tests.Extensions
     public static class DogApiExtensions
     {
         public static IFluentHttpClient CreateDog(this IFluentHttpClient client, Func<DogModel> dog, Func<HttpResponseMessage, Task>? response = null) => 
-            client.Request(() => HttpRequestMessageFactory.Post(dog()).WithUrl("api/dog"), response);
+            client.Request(
+                () => HttpRequestMessageFactory.Post(dog()).WithUrl("api/dog"), 
+                response,
+                name: nameof(CreateDog));
 
         public static IFluentHttpClient IncrementDogsAge(this IFluentHttpClient client, Func<DogModel> dog, Func<HttpResponseMessage, Task>? response = null) =>
             client.Request(() =>
@@ -20,7 +23,10 @@ namespace Fluent.Http.Dog.Api.Integration.Tests.Extensions
             }, response);
 
         public static IFluentHttpClient GetDog(this IFluentHttpClient client, Func<string> id, Func<HttpResponseMessage, Task>? response = null) =>
-            client.Request(() => HttpRequestMessageFactory.Get().WithUrl($"api/dog/{id()}"), response);
+            client.Request(
+                () => HttpRequestMessageFactory.Get().WithUrl($"api/dog/{id()}"),
+                response,
+                nameof(GetDog));
 
         public static IFluentHttpClient DeleteDog(this IFluentHttpClient client, Func<string> id, Func<HttpResponseMessage, Task>? response = null) =>
             client.Request(() => HttpRequestMessageFactory.Delete().WithUrl($"api/dog/{id()}"), response);

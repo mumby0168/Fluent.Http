@@ -17,10 +17,15 @@ namespace Fluent.Http
         /// </summary>
         /// <param name="step">The asynchronous step to run.</param>
         /// <param name="postStep">The asynchronous post step to run.</param>
-        public FluentStep(Func<Task> step, Func<Task>? postStep = null)
+        /// <param name="name">A friendly name for the step.</param>
+        public FluentStep(
+            Func<Task> step, 
+            Func<Task>? postStep = null,
+            string? name = null)
         {
             _step = step;
             _postStep = postStep;
+            Name = name;
         }
 
         /// <summary>
@@ -28,6 +33,10 @@ namespace Fluent.Http
         /// </summary>
         /// <returns></returns>
         public Task ExecuteAsync() => _step();
+
+        public int SequenceNumber { get; set; }
+        
+        public string? Name { get; }
 
         /// <summary>
         /// Performs a post function to the asynchronous step.

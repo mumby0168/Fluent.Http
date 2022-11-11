@@ -12,5 +12,15 @@ namespace Fluent.Http.Abstractions
         /// </summary>
         /// <returns></returns>
         Task ExecuteAsync();
+        
+        /// <summary>
+        /// The sequence number relative to all steps in the chain
+        /// </summary>
+        int SequenceNumber { get; set; }
+        
+        /// <summary>
+        /// A friendly name for a given step
+        /// </summary>
+        string? Name { get; }
     }
 }

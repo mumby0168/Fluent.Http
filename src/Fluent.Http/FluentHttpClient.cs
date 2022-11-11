@@ -1,5 +1,6 @@
 ﻿
 using Fluent.Http.Abstractions;
+using Fluent.Http.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -21,37 +22,77 @@ namespace Fluent.Http
         public List<IFluentStep> Steps { get; } = new();
 
         /// <inheritdoc/>
-        public IFluentHttpClient Request(Func<Task<HttpRequestMessage>> request, Func<HttpResponseMessage, Task>? response = null)
+        public IFluentHttpClient Request(
+            Func<Task<HttpRequestMessage>> request, 
+            Func<HttpResponseMessage, Task>? response = null,
+            string? name = null)
         {
-            Steps.Add(new FluentHttpStep(_client, request, response));
+            Steps.Add(new FluentHttpStep(
+                _client, 
+                request, 
+                response,
+                name));
             return this;
         }
 
         /// <inheritdoc/>
-        public IFluentHttpClient Request(Func<HttpRequestMessage> request, Func<HttpResponseMessage, Task>? response = null)
+        public IFluentHttpClient Request(
+            Func<HttpRequestMessage> request,
+            Func<HttpResponseMessage, Task>? response = null,
+            string? name = null)
         {
-            Steps.Add(new FluentHttpStep(_client, () => Task.FromResult(request()), response));
+            Steps.Add(new FluentHttpStep(
+                _client, 
+                () => Task.FromResult(request()), 
+                response, 
+                name));
             return this;
         }
 
         /// <inheritdoc/>
-        public IFluentHttpClient Step(Func<Task> step, Func<Task>? postStep = null)
+        public IFluentHttpClient Step(
+            Func<Task> step, 
+            Func<Task>? postStep = null,
+            string? name = null)
         {
-            Steps.Add(new FluentStep(step, postStep));
+            Steps.Add(new FluentStep(
+                step, 
+                postStep,
+                name));
             return this;
         }
         
         /// <inheritdoc/>
         public async Task ExecuteAsync()
         {
+            Int32 counter = 1;
+            
             foreach (IFluentStep step in Steps)
             {
-                await step.ExecuteAsync();
+                step.SequenceNumber = counter;
+
+                try
+                {
+                    await step.ExecuteAsync();
+                }
+                catch (Exception e)
+                {
+                    throw new FluentStepFailedException(counter, step.Name, e);
+                }
 
                 if (step is IFluentValidationStep validationStep)
                 {
-                    await validationStep.ValidateAsync();
+                    try
+                    {
+                        await validationStep.ValidateAsync();
+                    }
+                    catch (Exception e)
+                    {
+                        throw new FluentStepValidationFailedException(counter, step.Name, e);
+                    }
                 }
+
+                counter++;
             }
         }
 

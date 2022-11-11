@@ -39,7 +39,7 @@ namespace Fluent.Http.Tests
 
             message.Content.Should().BeOfType<StringContent>();
             message.Method.Should().Be(HttpMethod.Post);
-            StringContent content = (StringContent)message.Content!;
+            var content = (StringContent)message.Content!;
             Person? person = await content.ReadFromJsonAsync<Person>();
             person!.Id.Should().Be(1);
             person.Name.Should().Be("Joe Bloggs");
@@ -52,7 +52,7 @@ namespace Fluent.Http.Tests
 
             message.Content.Should().BeOfType<StringContent>();
             message.Method.Should().Be(HttpMethod.Put);
-            StringContent content = (StringContent)message.Content!;
+            var content = (StringContent)message.Content!;
             Person? person = await content.ReadFromJsonAsync<Person>();
             person!.Id.Should().Be(1);
             person.Name.Should().Be("Joe Bloggs");

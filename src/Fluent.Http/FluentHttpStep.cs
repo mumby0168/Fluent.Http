@@ -21,11 +21,17 @@ namespace Fluent.Http
         /// <param name="client">The http client to use for the request.</param>
         /// <param name="messageFunc">A function which returns the <see cref="HttpRequestMessage"/> to send.</param>
         /// <param name="responseFunc">A function which handles the <see cref="HttpResponseMessage"/> returned.</param>
-        public FluentHttpStep(HttpClient client, Func<Task<HttpRequestMessage>> messageFunc, Func<HttpResponseMessage, Task>? responseFunc = null)
+        /// <param name="name">A friendly name for the step.</param>
+        public FluentHttpStep(
+            HttpClient client, 
+            Func<Task<HttpRequestMessage>> messageFunc, 
+            Func<HttpResponseMessage, Task>? responseFunc = null,
+            string? name = null)
         {
             _client = client;
             _messageFunc = messageFunc;
             _responseFunc = responseFunc;
+            Name = name;
         }
 
         /// <summary>
@@ -33,6 +39,9 @@ namespace Fluent.Http
         /// </summary>
         public async Task ExecuteAsync() => 
             ResponseMessage = await _client.SendAsync(await _messageFunc.Invoke());
+
+        public int SequenceNumber { get; set; }
+        public string? Name { get; }
 
         /// <summary>
         /// Processes the <see cref="HttpResponseMessage"/>
