@@ -3,6 +3,7 @@ using Fluent.Http.Abstractions;
 using Fluent.Http.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace Fluent.Http
     public class FluentHttpClient : IFluentHttpClient
     {
         private readonly HttpClient _client;
+        private Int32 _numberOfStepsExectued = 0;
         
         private FluentHttpClient(HttpClient? client) => _client = client ?? new HttpClient();
 
@@ -65,11 +67,10 @@ namespace Fluent.Http
         /// <inheritdoc/>
         public async Task ExecuteAsync()
         {
-            Int32 counter = 1;
-            
-            foreach (IFluentStep step in Steps)
+            foreach (IFluentStep step in Steps.Skip(_numberOfStepsExectued))
             {
-                step.SequenceNumber = counter;
+                Int32 stepSequenceNumber = _numberOfStepsExectued + 1;
+                step.SequenceNumber = stepSequenceNumber;
 
                 try
                 {
@@ -77,7 +78,7 @@ namespace Fluent.Http
                 }
                 catch (Exception e)
                 {
-                    throw new FluentStepFailedException(counter, step.Name, e);
+                    throw new FluentStepFailedException(stepSequenceNumber, step.Name, e);
                 }
 
                 if (step is IFluentValidationStep validationStep)
@@ -88,13 +89,26 @@ namespace Fluent.Http
                     }
                     catch (Exception e)
                     {
-                        throw new FluentStepValidationFailedException(counter, step.Name, e);
+                        throw new FluentStepValidationFailedException(stepSequenceNumber, step.Name, e);
                     }
                 }
-
-                counter++;
+                
+                _numberOfStepsExectued++;
             }
         }
 
+        /// <inheritdoc/>
+        public IFluentHttpClient Rewind(Int32? count = null)
+        {
+            count ??= _numberOfStepsExectued;
+            _numberOfStepsExectued -= count.Value;
+
+            if (_numberOfStepsExectued < 0)
+            {
+                _numberOfStepsExectued = 0;
+            }
+            
+            return this;
+        }
     }
 }

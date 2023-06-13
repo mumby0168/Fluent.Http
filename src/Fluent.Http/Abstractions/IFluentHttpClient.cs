@@ -53,5 +53,12 @@ namespace Fluent.Http.Abstractions
         /// Executes all the steps defined in the <see cref="Steps"/>
         /// </summary>
         Task ExecuteAsync();
+
+        /// <summary>
+        /// Rewinds the number of steps provided or all of them if null is passed. This allows multiple calls to execute async to run the same steps.
+        /// </summary>
+        /// <param name="count">The number of steps to rewind. All of them if null is provided.</param>
+        /// <returns></returns>
+        IFluentHttpClient Rewind(Int32? count = null);
     }
 }

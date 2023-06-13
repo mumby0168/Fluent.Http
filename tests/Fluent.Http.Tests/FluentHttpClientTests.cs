@@ -114,5 +114,77 @@ namespace Fluent.Http.Tests
             calledStep.Should().BeTrue();
             calledPostStep.Should().BeTrue();
         }
+        
+        [Fact]
+        public async Task ExecuteAsync_MultipleCalls_DoesNotExecuteStepsTwice()
+        {
+            _handler
+                .When(HttpMethod.Get, "http://test.com/api/test")
+                .Respond(HttpStatusCode.OK);
+
+            int stepOneCallCount = 0;
+            int stepTwoCallCount = 0;
+            
+            IFluentHttpClient client = FluentHttpClient.Build(_client);
+
+            await client.Step(
+                    () =>
+                    {
+                        stepOneCallCount++;
+                        return Task.CompletedTask;
+                    })
+                .ExecuteAsync();
+
+            await client.Step(
+                    () =>
+                    {
+                        stepTwoCallCount++;
+                        return Task.CompletedTask;
+                    })
+                .ExecuteAsync();
+            
+            stepOneCallCount.Should().Be(1);
+            stepTwoCallCount.Should().Be(1);
+        }
+        
+        [Fact]
+        public async Task ExecuteAsync_WithRewind_AllowsMultipleCalls()
+        {
+            _handler
+                .When(HttpMethod.Get, "http://test.com/api/test")
+                .Respond(HttpStatusCode.OK);
+
+            int stepOneCallCount = 0;
+            int stepTwoCallCount = 0;
+            
+            IFluentHttpClient client = FluentHttpClient.Build(_client);
+
+            await client.Step(
+                    () =>
+                    {
+                        stepOneCallCount++;
+                        return Task.CompletedTask;
+                    })
+                .ExecuteAsync();
+
+            await client.Step(
+                    () =>
+                    {
+                        stepTwoCallCount++;
+                        return Task.CompletedTask;
+                    })
+                .ExecuteAsync();
+            
+            await client
+                .Rewind(1)
+                .ExecuteAsync();
+            
+            await client
+                .Rewind()
+                .ExecuteAsync();
+            
+            stepOneCallCount.Should().Be(2);
+            stepTwoCallCount.Should().Be(3);
+        }
     }
 }
