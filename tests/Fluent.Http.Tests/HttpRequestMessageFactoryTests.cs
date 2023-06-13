@@ -57,6 +57,19 @@ namespace Fluent.Http.Tests
             person!.Id.Should().Be(1);
             person.Name.Should().Be("Joe Bloggs");
         }
+        
+        [Fact]
+        public async Task Patch_JsonObject_SetsPatchRequestCorrectly()
+        {
+            HttpRequestMessage message = Put(new Person {Id = 1, Name = "Joe Bloggs"});
+
+            message.Content.Should().BeOfType<StringContent>();
+            message.Method.Should().Be(HttpMethod.Patch);
+            var content = (StringContent)message.Content!;
+            Person? person = await content.ReadFromJsonAsync<Person>();
+            person!.Id.Should().Be(1);
+            person.Name.Should().Be("Joe Bloggs");
+        }
 
     }
 }

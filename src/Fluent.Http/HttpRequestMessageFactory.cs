@@ -68,5 +68,17 @@ namespace Fluent.Http
             new HttpRequestMessageBuilder()
                 .WithMethod(HttpMethod.Put)
                 .WithJsonBody(body, settings);
+
+        /// <summary>
+        /// Creates a <see cref="HttpRequestMessageBuilder"/> for a http PATCH method.
+        /// </summary>
+        /// <param name="body">The body to serialized into the PATCH request</param>
+        /// <param name="settings">The settings to be used by <see cref="JsonConvert"/></param>
+        /// <typeparam name="TBody">The type of the body to be serialized.</typeparam>
+        /// <returns><see cref="HttpRequestMessageBuilder"/></returns>
+        public static HttpRequestMessageBuilder Patch<TBody>(TBody body, JsonSerializerSettings? settings = null) => 
+            new HttpRequestMessageBuilder()
+                .WithMethod(FluentHttpConstants.HttpMethodPatch)
+                .WithJsonBody(body, settings);
     }
 }
