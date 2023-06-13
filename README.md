@@ -17,7 +17,7 @@ This also can optionally take an instance of a http client to include things suc
 
 ```c#
 HttpClient client = new HttpClient() { BaseAddress = new Uri("http://www.google.co.uk") };
-IFluentHttpClient fluentClient = FluentHttpClient.Build();
+IFluentHttpClient fluentClient = FluentHttpClient.Build(client);
 ```
 
 Once you have created an instance of a client then a set of http requests can be chained together using the fluent API and then ran using the `ExecuteAsync()` method to run the requests in the order they have been defined. See below for a complete example.
