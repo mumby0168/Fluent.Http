@@ -61,7 +61,7 @@ namespace Fluent.Http.Tests
         [Fact]
         public async Task Patch_JsonObject_SetsPatchRequestCorrectly()
         {
-            HttpRequestMessage message = Put(new Person {Id = 1, Name = "Joe Bloggs"});
+            HttpRequestMessage message = Patch(new Person {Id = 1, Name = "Joe Bloggs"});
 
             message.Content.Should().BeOfType<StringContent>();
             message.Method.Should().Be(HttpMethod.Patch);
